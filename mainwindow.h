@@ -18,7 +18,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+public:
+    QSqlDatabase mySqLiteDb;
+    void conClose();
+    bool conOpen();
 private slots:
     void on_pushButton_clicked();
 

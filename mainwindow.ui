@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Extra">
      <attribute name="title">
@@ -113,7 +113,7 @@
        <rect>
         <x>210</x>
         <y>90</y>
-        <width>321</width>
+        <width>531</width>
         <height>121</height>
        </rect>
       </property>
