@@ -16,6 +16,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    QSqlDatabase mySqLiteDb;
+    void conClose();
+    bool conOpen();
+
+public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
