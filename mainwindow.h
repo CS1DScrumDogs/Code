@@ -6,7 +6,7 @@
 #include<QSqlDatabase>
 #include<QMessageBox>
 #include <QSqlQuery>
-
+#include "adminwindow.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -27,7 +27,12 @@ private slots:
 
     void on_pushButton_Load_clicked();
 
+    void on_pushButton_Login_clicked();
+
+    void on_pushButton_ListSouvenirs_clicked();
+
 private:
     Ui::MainWindow *ui;
+   AdminWindow *admin;
 };
 #endif // MAINWINDOW_H
