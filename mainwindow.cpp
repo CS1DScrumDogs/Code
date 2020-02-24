@@ -20,44 +20,60 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox->addItem("University of the Pacific");
     ui->comboBox->addItem("University of Wisconsin");
 }
-
+//test
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+void MainWindow::conClose()
+{
+    mySqLiteDb.close();
+    mySqLiteDb.removeDatabase(QSqlDatabase::defaultConnection);
+}
+
+bool MainWindow::conOpen()
+{
+    mySqLiteDb = QSqlDatabase::addDatabase("QSQLITE");
+    mySqLiteDb.setDatabaseName("/Users/alvarohernandez/ScrumDogs.db");
+    if(!mySqLiteDb.open())
+    {
+        qDebug() << ("Database Not connected");
+        return false;
+    }
+    else
+    {
+        qDebug() << ("Database Connected Successfully");
+        return true;
+    }
+}
 
 void MainWindow::on_pushButton_clicked()
 {
-    QSqlDatabase sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
-    sqlitedb.setDatabaseName("/Users/alvarohernandez/ScrumDogs.db");
-    if(!sqlitedb.open()) {
-
+    if(!conOpen())
+    {
         QMessageBox::information(this, "Not Connected", "Database Not connected");
     }
-    else {
-
+    else
+    {
         QMessageBox::information(this, "Connected", "Database Connected Successfully");
     }
-
 }
 
 void MainWindow::on_showColeges_clicked()
 {
     QSqlQueryModel *modal = new QSqlQueryModel();
+    conOpen();
 
-    QSqlDatabase sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
-    sqlitedb.setDatabaseName("/Users/alvarohernandez/ScrumDogs.db");
-    sqlitedb.open();
+    QSqlQuery *qry = new QSqlQuery(mySqLiteDb);
+    qry->prepare("select * from saddleback");
 
-    QSqlQuery *test = new QSqlQuery(sqlitedb);
-    test->prepare("select * from saddleback");
-
-    test->exec();
-    modal->setQuery(*test);
+    qry->exec();
+    modal->setQuery(*qry);
     ui->tableView->setModel(modal);
 
-    sqlitedb.close();
+    conClose();
     qDebug()<<(modal->rowCount());
-
 }
+
+
