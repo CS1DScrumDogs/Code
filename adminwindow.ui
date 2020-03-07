@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1412</width>
-    <height>1069</height>
+    <width>2184</width>
+    <height>1747</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QGroupBox" name="groupBox_AdminPage">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>1391</width>
-     <height>1041</height>
+     <x>-1</x>
+     <y>-1</y>
+     <width>2151</width>
+     <height>1731</height>
     </rect>
    </property>
    <property name="title">
@@ -28,8 +28,8 @@
    <widget class="QPushButton" name="pushButton_BackToMainWindow">
     <property name="geometry">
      <rect>
-      <x>1180</x>
-      <y>950</y>
+      <x>1820</x>
+      <y>1640</y>
       <width>191</width>
       <height>71</height>
      </rect>
@@ -41,6 +41,271 @@
     </property>
     <property name="text">
      <string>Main Page</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_AddNewSouvenir">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>750</y>
+      <width>301</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Add New Souvenir</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_ADTraditionalSouvenirs">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>480</y>
+      <width>271</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_ADCost">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>590</y>
+      <width>271</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTastCD">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>621</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Provide the capability to add/delete traditional souvenirs.</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxADSouvenirsColleges">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>200</y>
+      <width>711</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_ADTraditionalSouvenirs">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>480</y>
+      <width>331</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Traditional Souvenirs</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_ADCost">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>600</y>
+      <width>151</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cost</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_DeleteOldSouvenir">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>750</y>
+      <width>301</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Delete Old Souvenir</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTaskB">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>30</y>
+      <width>591</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Provide the capability to change the prices of the traditional souvenirs.</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableViewCurrentTraditionalSouvenirs">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>450</y>
+      <width>441</width>
+      <height>301</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_DisplayCurrentSouvenirs">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>770</y>
+      <width>441</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Display Current Souvenirs</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_UTraditionalSouvenirs">
+    <property name="geometry">
+     <rect>
+      <x>1410</x>
+      <y>450</y>
+      <width>331</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Traditional Souvenirs</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_UCost">
+    <property name="geometry">
+     <rect>
+      <x>1420</x>
+      <y>620</y>
+      <width>151</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cost</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_UTraditionalSouvenirs">
+    <property name="geometry">
+     <rect>
+      <x>1750</x>
+      <y>470</y>
+      <width>271</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_UCost">
+    <property name="geometry">
+     <rect>
+      <x>1760</x>
+      <y>630</y>
+      <width>271</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton__UpdateSouvenir">
+    <property name="geometry">
+     <rect>
+      <x>1510</x>
+      <y>780</y>
+      <width>301</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Update Souvenir</string>
     </property>
    </widget>
   </widget>

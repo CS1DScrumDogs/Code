@@ -71,8 +71,8 @@ void MainWindow::on_pushButton_Load_clicked()
     modal->setQuery(*qry);
     ui->tableViewSaddleback->setModel(modal);
     ui->tableViewSaddleback->resizeColumnsToContents();
-    conClose();
     qDebug()<<(modal->rowCount());
+    conClose();
 }
 
 void MainWindow::on_pushButton_Login_clicked()
@@ -82,7 +82,8 @@ void MainWindow::on_pushButton_Login_clicked()
     if(username == "test" && password == "test")
     {
       QMessageBox::information(this, "Login", "Username and password is correct");
-        hide();
+       // hide();
+        close();
         admin = new AdminWindow(this);
         admin->show();
     }
@@ -107,11 +108,47 @@ void MainWindow::on_pushButton_ListSouvenirs_clicked()
     {
         qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"Massachusetts Institute of Technology (MIT)\"");
     }
+    else if(currentText =="Northwestern")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"Northwestern\"");
+    }
+    else if(currentText =="Ohio State University")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"Ohio State University\"");
+    }
+    else if(currentText =="University of  Michigan")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of  Michigan\"");
+    }
+    else if(currentText =="University of California, Irvine (UCI)")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of California, Irvine (UCI)\"");
+    }
+    else if(currentText =="University of California, Los Angeles (UCLA)")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of California, Los Angeles (UCLA)\"");
+    }
+    else if(currentText =="University of Oregon")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of Oregon\"");
+    }
+    else if(currentText =="University of Texas")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of Texas\"");
+    }
+    else if(currentText =="University of the Pacific")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of the Pacific\"");
+    }
+    else if(currentText =="University of Wisconsiny")
+    {
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of Wisconsin\"");
+    }
 
     qry->exec();
     modal->setQuery(*qry);
     ui->tableViewSouvenirs->setModel(modal);
     ui->tableViewSouvenirs->resizeColumnsToContents();
-    conClose();
     qDebug()<<(modal->rowCount());
+    conClose();
 }

@@ -24,11 +24,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
-    <widget class="QWidget" name="Extra">
+    <widget class="QWidget" name="UserStory0">
      <attribute name="title">
-      <string>Extra</string>
+      <string>User Story 0</string>
      </attribute>
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
@@ -267,6 +267,11 @@
        <enum>QLineEdit::Password</enum>
       </property>
      </widget>
+    </widget>
+    <widget class="QWidget" name="UserStory8">
+     <attribute name="title">
+      <string>User Story 8</string>
+     </attribute>
     </widget>
    </widget>
   </widget>
