@@ -6,8 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>797</width>
     <height>461</height>
+=======
+    <width>872</width>
+    <height>475</height>
+>>>>>>> alhern95-patch-1
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +29,11 @@
      </rect>
     </property>
     <property name="currentIndex">
+<<<<<<< HEAD
      <number>1</number>
+=======
+     <number>0</number>
+>>>>>>> alhern95-patch-1
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -112,7 +121,11 @@
     <rect>
      <x>0</x>
      <y>0</y>
+<<<<<<< HEAD
      <width>797</width>
+=======
+     <width>872</width>
+>>>>>>> alhern95-patch-1
      <height>22</height>
     </rect>
    </property>
