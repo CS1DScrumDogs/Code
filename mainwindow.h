@@ -7,6 +7,10 @@
 #include<QMessageBox>
 #include <QSqlQuery>
 #include "adminwindow.h"
+#include "database.h"
+#include "colleges.h"
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -19,9 +23,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 public:
+    dataBase myDb;
     QSqlDatabase mySqLiteDb;
-    void conClose();
-    bool conOpen();
+    colleges college;
+
 private slots:
     void on_pushButton_clicked();
 
@@ -31,9 +36,12 @@ private slots:
 
     void on_pushButton_ListSouvenirs_clicked();
 
+    void on_pushButton_UCI_clicked();
+
+    void on_pushButton_ACU_clicked();
+
 private:
     Ui::MainWindow *ui;
-   AdminWindow *admin;
-   QSqlDatabase db;
+    AdminWindow *admin;
 };
 #endif // MAINWINDOW_H

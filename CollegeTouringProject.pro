@@ -18,16 +18,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Database.cpp \
     adminwindow.cpp \
+    colleges.cpp \
+    collegewidget.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     Database.h \
     adminwindow.h \
+    colleges.h \
+    collegewidget.h \
     mainwindow.h \
     vector.h
 
 FORMS += \
+    adminwindow.ui \
+    collegewidget.ui \
     adminwindow.ui \
     mainwindow.ui
 
@@ -35,3 +41,4 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+

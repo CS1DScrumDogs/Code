@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "collegewidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,31 +27,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::conClose()
-{
-    mySqLiteDb.close();
-    mySqLiteDb.removeDatabase(QSqlDatabase::defaultConnection);
-}
-
-bool MainWindow::conOpen()
-{
-    mySqLiteDb = QSqlDatabase::addDatabase("QSQLITE");
-    mySqLiteDb.setDatabaseName("C:/sqlite3/ScrumDogs.db");
-    if(!mySqLiteDb.open())
-    {
-        qDebug() << ("Database Not connected");
-        return false;
-    }
-    else
-    {
-        qDebug() << ("Database Connected Successfully");
-        return true;
-    }
-}
-
 void MainWindow::on_pushButton_clicked()
 {
-    if(!conOpen())
+    if(!myDb.conOpen())
     {
         QMessageBox::information(this, "Not Connected", "Database Not connected");
     }
@@ -63,7 +42,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_Load_clicked()
 {
     QSqlQueryModel *modal = new QSqlQueryModel();
-    conOpen();
+    myDb.conOpen();
 
     QSqlQuery *qry = new QSqlQuery(mySqLiteDb);
     qry->prepare("SELECT * FROM saddleback WHERE startingCollege=\"Saddleback College\"");
@@ -71,8 +50,8 @@ void MainWindow::on_pushButton_Load_clicked()
     modal->setQuery(*qry);
     ui->tableViewSaddleback->setModel(modal);
     ui->tableViewSaddleback->resizeColumnsToContents();
+    myDb.conClose();
     qDebug()<<(modal->rowCount());
-    conClose();
 }
 
 void MainWindow::on_pushButton_Login_clicked()
@@ -82,8 +61,7 @@ void MainWindow::on_pushButton_Login_clicked()
     if(username == "test" && password == "test")
     {
       QMessageBox::information(this, "Login", "Username and password is correct");
-       // hide();
-        close();
+        hide();
         admin = new AdminWindow(this);
         admin->show();
     }
@@ -96,7 +74,7 @@ void MainWindow::on_pushButton_Login_clicked()
 void MainWindow::on_pushButton_ListSouvenirs_clicked()
 {
     QSqlQueryModel *modal = new QSqlQueryModel();
-    conOpen();
+    myDb.conOpen();
 
     QSqlQuery *qry = new QSqlQuery(mySqLiteDb);
     QString currentText = ui->comboBoxSouvenirsFColleges->currentText();
@@ -140,15 +118,42 @@ void MainWindow::on_pushButton_ListSouvenirs_clicked()
     {
         qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of the Pacific\"");
     }
-    else if(currentText =="University of Wisconsiny")
+    else if(currentText =="University of Wisconsin")
     {
         qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"University of Wisconsin\"");
     }
 
     qry->exec();
     modal->setQuery(*qry);
-    ui->tableViewSouvenirs->setModel(modal);
-    ui->tableViewSouvenirs->resizeColumnsToContents();
+    ui->tableViewSaddleback->setModel(modal);
+    ui->tableViewSaddleback->resizeColumnsToContents();
+    myDb.conClose();
     qDebug()<<(modal->rowCount());
-    conClose();
+}
+
+
+
+void MainWindow::on_pushButton_UCI_clicked()
+{
+    collegeWidget cw(this);
+    QVector<College> testVect;
+
+    //cw.recursiveSort();
+    cw.showColleges();
+    cw.exec();
+
+
+    testVect = college.getColleges();
+
+    qDebug() << "Testing vector";
+    for (int i = 0; i < testVect.size(); i++)
+    {
+        qDebug() << testVect[i].name << " " << testVect[i].distance;
+    }
+
+}
+
+void MainWindow::on_pushButton_ACU_clicked()
+{
+
 }

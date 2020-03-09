@@ -185,4 +185,3 @@ void AdminWindow::on_pushButton_UpdateSouvenir_clicked()
     }
     database->conClose();
 }
-

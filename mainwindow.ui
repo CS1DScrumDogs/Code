@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2065</width>
-    <height>1441</height>
+    <width>1105</width>
+    <height>492</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,13 +18,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>2051</width>
-      <height>1381</height>
+      <y>10</y>
+      <width>1091</width>
+      <height>421</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Extra">
      <attribute name="title">
@@ -33,8 +33,8 @@
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>200</y>
+        <x>610</x>
+        <y>160</y>
         <width>201</width>
         <height>91</height>
        </rect>
@@ -44,17 +44,42 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="UserStory1">
+    <widget class="QWidget" name="Student">
      <attribute name="title">
       <string>User Story 1</string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>30</y>
+        <width>521</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTableView" name="tableViewSaddleback">
+         <property name="lineWidth">
+          <number>3</number>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="cornerButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>450</x>
         <y>10</y>
-        <width>901</width>
-        <height>101</height>
+        <width>121</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="font">
@@ -63,137 +88,155 @@
        </font>
       </property>
       <property name="text">
-       <string>Select a College to see the distance from saddleback</string>
+       <string>College Tour Project</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_Load">
+     <widget class="QWidget" name="layoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>610</y>
-        <width>231</width>
-        <height>71</height>
+        <x>730</x>
+        <y>30</y>
+        <width>191</width>
+        <height>70</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Load</string>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QComboBox" name="comboBoxSouvenirsFColleges"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_ListSouvenirs">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Output Souvenirs</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QTableView" name="tableViewSaddleback">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>90</y>
-        <width>1011</width>
-        <height>471</height>
+        <x>730</x>
+        <y>110</y>
+        <width>196</width>
+        <height>100</height>
        </rect>
       </property>
-      <property name="lineWidth">
-       <number>3</number>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-      <property name="cornerButtonEnabled">
-       <bool>true</bool>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="pushButton_UCI">
+         <property name="text">
+          <string>UCI Trip</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_ACU">
+         <property name="text">
+          <string>ASU Trip</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Load">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Distance's from Saddlback</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="UserStory7">
      <attribute name="title">
       <string>User Story 7</string>
      </attribute>
-     <widget class="QLabel" name="label_UserName">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>130</y>
-        <width>241</width>
-        <height>51</height>
+        <x>490</x>
+        <y>110</y>
+        <width>381</width>
+        <height>201</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>UserName</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_Password">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>280</y>
-        <width>231</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Password</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_Login">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>460</y>
-        <width>351</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Login</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_UserName">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>120</y>
-        <width>251</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_Password">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>260</y>
-        <width>251</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_UserName">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>UserName</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_UserName">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_Password">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_Password">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Login">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
@@ -203,7 +246,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>2065</width>
+     <width>1105</width>
      <height>21</height>
     </rect>
    </property>
