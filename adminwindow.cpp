@@ -12,27 +12,7 @@ AdminWindow::~AdminWindow()
 {
     delete ui;
 }
-void AdminWindow::conClose()
-{
-    mySqLiteDb.close();
-    mySqLiteDb.removeDatabase(QSqlDatabase::defaultConnection);
-}
 
-bool AdminWindow::conOpen()
-{
-    mySqLiteDb = QSqlDatabase::addDatabase("QSQLITE");
-    mySqLiteDb.setDatabaseName("C:/sqlite3/ScrumDogs.db");
-    if(!mySqLiteDb.open())
-    {
-        qDebug() << ("Database Not connected");
-        return false;
-    }
-    else
-    {
-        qDebug() << ("Database Connected Successfully");
-        return true;
-    }
-}
 void AdminWindow::on_pushButton_BackToMainWindow_clicked()
 {
     hide();
@@ -77,7 +57,7 @@ void AdminWindow::on_tableViewCurrentTraditionalSouvenirs_activated(const QModel
 void AdminWindow::on_pushButton_DisplayCurrentSouvenirs_clicked()
 {
     QSqlQueryModel *modal = new QSqlQueryModel();
-    conOpen();
+    database->conOpen();
     QSqlQuery *qry = new QSqlQuery(mySqLiteDb);
     qry->prepare("SELECT * FROM souvenirs");
     qry->exec();
@@ -85,12 +65,12 @@ void AdminWindow::on_pushButton_DisplayCurrentSouvenirs_clicked()
     ui->tableViewCurrentTraditionalSouvenirs->setModel(modal);
     ui->tableViewCurrentTraditionalSouvenirs->resizeColumnsToContents();
     qDebug()<<(modal->rowCount());
-    conClose();
+    database->conClose();
 }
 void AdminWindow::on_pushButton_AddNewSouvenir_clicked()
 {
     QSqlQueryModel *modal = new QSqlQueryModel();
-    conOpen();
+   database->conOpen();
     bool querySuccess = false;
     QSqlQuery qry(mySqLiteDb);
     QString college = "";
@@ -126,14 +106,14 @@ void AdminWindow::on_pushButton_AddNewSouvenir_clicked()
         QMessageBox::warning(this, "ERROR",
                              "Please enter ALL souvenirs attributes");
     }
-    conClose();
+    database->conClose();
 }
 
 void AdminWindow::on_pushButton_DeleteOldSouvenir_clicked()
 {
     // Declaration
     QSqlQueryModel *modal = new QSqlQueryModel();
-    conOpen();
+    database->conOpen();
     bool querySuccess = false;
     int rowIndex = 0;
     QSqlQuery qry(mySqLiteDb);
@@ -156,7 +136,7 @@ void AdminWindow::on_pushButton_DeleteOldSouvenir_clicked()
     {
         qDebug() << qry.lastError().text();
     }
-    conClose();
+    database->conClose();
 }
 
 
@@ -164,7 +144,7 @@ void AdminWindow::on_pushButton_UpdateSouvenir_clicked()
 {
      // Declaration
     QSqlQueryModel *modal = new QSqlQueryModel();
-    conOpen();
+    database->conOpen();
      bool querySuccess = false;
      QSqlQuery qry(mySqLiteDb);
     int index = 0;
@@ -203,6 +183,6 @@ void AdminWindow::on_pushButton_UpdateSouvenir_clicked()
     {
         QMessageBox::warning(this, "ERROR", "Please enter ALL customer attributes");
     }
-    conClose();
+    database->conClose();
 }
 

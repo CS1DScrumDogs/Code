@@ -20,8 +20,6 @@ public:
     ~AdminWindow();
 public:
     QSqlDatabase mySqLiteDb;
-    void conClose();
-    bool conOpen();
     void InitializeTableView(QTableView *tableView);
     bool IsAnyEmptyField();
 private slots:

@@ -3,7 +3,27 @@
 // Constructor
 // Parameterized constructor
 Database::Database(){}
+void Database::conClose()
+{
+    mySqLiteDb.close();
+    mySqLiteDb.removeDatabase(QSqlDatabase::defaultConnection);
+}
 
+bool Database::conOpen()
+{
+    mySqLiteDb = QSqlDatabase::addDatabase("QSQLITE");
+    mySqLiteDb.setDatabaseName("C:/sqlite3/ScrumDogs.db");
+    if(!mySqLiteDb.open())
+    {
+        qDebug() << ("Database Not connected");
+        return false;
+    }
+    else
+    {
+        qDebug() << ("Database Connected Successfully");
+        return true;
+    }
+}
 // Add Souvenirs (all fields at once)
 bool Database::AddSouvenirs(QString college, QString traditionalSouvenir, QString cost)
 {

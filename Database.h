@@ -10,6 +10,8 @@ class Database : public QSqlDatabase
 public:
     // Constructor
     Database();
+    void conClose();
+    bool conOpen();
                 // Add Souvenirs
                 // Note: This will convert empty values to null too
     bool AddSouvenirs(QString college, QString traditionalSouvenir, QString cost);
@@ -23,5 +25,6 @@ public:
     // Destructor
     ~Database();
 private:
+    QSqlDatabase mySqLiteDb;
 };
 #endif // DATABASE_H
