@@ -16,29 +16,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Database.cpp \
     adminwindow.cpp \
     colleges.cpp \
     collegewidget.cpp \
+    database.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    Database.h \
     adminwindow.h \
     colleges.h \
     collegewidget.h \
-    mainwindow.h \
-    vector.h
+    database.h \
+    mainwindow.h
 
 FORMS += \
     adminwindow.ui \
     collegewidget.ui \
-    adminwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
 
