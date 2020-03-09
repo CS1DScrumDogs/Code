@@ -24,11 +24,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
-    <widget class="QWidget" name="UserStory0">
+    <widget class="QWidget" name="Extra">
      <attribute name="title">
-      <string>User Story 0</string>
+      <string>Extra</string>
      </attribute>
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
@@ -103,78 +103,6 @@
        <bool>true</bool>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="UserStory2">
-     <attribute name="title">
-      <string>User Story 2</string>
-     </attribute>
-     <widget class="QComboBox" name="comboBoxSouvenirsFColleges">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>50</y>
-        <width>531</width>
-        <height>121</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTableView" name="tableViewSouvenirs">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>210</y>
-        <width>761</width>
-        <height>391</height>
-       </rect>
-      </property>
-      <property name="lineWidth">
-       <number>3</number>
-      </property>
-      <property name="midLineWidth">
-       <number>3</number>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_ListSouvenirs">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>650</y>
-        <width>231</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Output</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="UserStory3">
-     <attribute name="title">
-      <string>User Story 3</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="UserStory4">
-     <attribute name="title">
-      <string>User Story 4</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="UserStory5">
-     <attribute name="title">
-      <string>User Story 5</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="UserStory6">
-     <attribute name="title">
-      <string>User Story 6</string>
-     </attribute>
     </widget>
     <widget class="QWidget" name="UserStory7">
      <attribute name="title">
@@ -267,11 +195,6 @@
        <enum>QLineEdit::Password</enum>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="UserStory8">
-     <attribute name="title">
-      <string>User Story 8</string>
-     </attribute>
     </widget>
    </widget>
   </widget>
