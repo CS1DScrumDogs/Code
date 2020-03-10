@@ -28,7 +28,7 @@ class colleges
 {
 private:
     QSqlDatabase mySqLiteDb;
-    dataBase myDb;
+    Database myDb;
     College myCollege;
     Distances myDistances;
 public:
