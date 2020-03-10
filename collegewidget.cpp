@@ -25,13 +25,35 @@ void collegeWidget::showColleges()
 //    tempD = co.getDistances();
     temp = co.getColleges();
     int fill;
-    double totalDist = 0.0;
+
+
+//    for (int i = 0; i < temp.length(); i++)
+//    {
+//        tempD[i].beg = temp[i].name;
+//        if (i == 9)
+//        {
+//            tempD[i].end = "End";
+//        }
+//        else
+//        {
+//            tempD[i].end = temp[i+1].name;
+//        }
+
+//        tempD[i].distance = temp[i].distance;
+//    }
+
+//    qDebug() << "Testing vector distance";
+//    for (int i = 0; i < tempD.size(); i++)
+//    {
+//        qDebug() << tempD[i].beg << " " << tempD.end() << " " << tempD[i].distance;
+//    }
+
 
     recursiveSort(temp);
 
     for (int i = 0; i < temp.length(); i++)
     {
-        totalDist += temp[i].distance;
+
         ui->tableWidgetColleges->insertRow(ui->tableWidgetColleges->rowCount());
         fill = ui->tableWidgetColleges->rowCount() - 1;
         ui->tableWidgetColleges->setItem(fill, 0, new QTableWidgetItem(temp[i].name));
@@ -47,12 +69,6 @@ void collegeWidget::showColleges()
         }
         ui->tableWidgetColleges->setItem(fill, 2, new QTableWidgetItem(QString::number(temp[i].distance)));
     }
-    ui->tableWidgetColleges->insertRow(ui->tableWidgetColleges->rowCount());
-    fill = ui->tableWidgetColleges->rowCount() - 1;
-    ui->tableWidgetColleges->setItem(fill, 0, new QTableWidgetItem(""));
-    ui->tableWidgetColleges->setItem(fill, 1, new QTableWidgetItem("Total Distance"));
-    ui->tableWidgetColleges->setItem(fill, 2, new QTableWidgetItem(QString::number(totalDist)));
-
     ui->tableWidgetColleges->resizeColumnsToContents();
 }
 
@@ -87,6 +103,29 @@ void collegeWidget::recursiveSort(QVector<College>&vC)
     {
         qDebug() << vC[i].name << " " << vC[i].distance;
     }
+
+
+
+
+
+//    for (int i = 0; i < temp.size(); i++)
+//    {
+//        ui->tableWidgetColleges->insertRow(ui->tableWidgetColleges->rowCount());
+//        fill = ui->tableWidgetColleges->rowCount() - 1;
+//        beg = temp[i].name;
+//        end = temp[i + 1].name;
+//        if (i == 0)
+//        {
+//            ui->tableWidgetColleges->setItem(fill, 0, new QTableWidgetItem("Saddleback"));
+//        }
+//        else
+//        {
+//            ui->tableWidgetColleges->setItem(fill, 0, new QTableWidgetItem(temp[i].name));
+//        }
+//        ui->tableWidgetColleges->setItem(fill, 0, new QTableWidgetItem(temp[i].name));
+//        ui->tableWidgetColleges->setItem(fill, 1, new QTableWidgetItem(temp[i].name));
+//        ui->tableWidgetColleges->setItem(fill, 2, new QTableWidgetItem(QString::number(temp[i].distance)));
+//    }
 }
 College collegeWidget::returnUci()
 {
