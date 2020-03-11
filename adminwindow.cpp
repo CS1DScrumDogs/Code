@@ -63,6 +63,9 @@ void AdminWindow::on_pushButton_DisplayCurrentSouvenirs_clicked()
     modal->setQuery(*qry);
     ui->tableViewCurrentTraditionalSouvenirs->setModel(modal);
     ui->tableViewCurrentTraditionalSouvenirs->resizeColumnsToContents();
+    modal->setHeaderData(0, Qt::Horizontal, QObject::tr("College"));
+    modal->setHeaderData(1, Qt::Horizontal, QObject::tr("Traditional Souvenir"));
+    modal->setHeaderData(2, Qt::Horizontal, QObject::tr("Cost"));
     qDebug()<<(modal->rowCount());
     database.conClose();
 }
@@ -141,11 +144,11 @@ void AdminWindow::on_pushButton_DeleteOldSouvenir_clicked()
 
 void AdminWindow::on_pushButton_UpdateSouvenir_clicked()
 {
-     // Declaration
+    // Declaration
     QSqlQueryModel *modal = new QSqlQueryModel();
     database.conOpen();
-     bool querySuccess = false;
-     QSqlQuery qry(mySqLiteDb);
+    bool querySuccess = false;
+    QSqlQuery qry(mySqLiteDb);
     int index = 0;
     QString college = "";
     QString traditionalSouvenir = "";
@@ -155,9 +158,9 @@ void AdminWindow::on_pushButton_UpdateSouvenir_clicked()
     if(!IsAnyEmptyField())
     {
         // Access Index
-            index = ui->tableViewCurrentTraditionalSouvenirs->currentIndex().row();
+        index = ui->tableViewCurrentTraditionalSouvenirs->currentIndex().row();
 
-            // Assign customerID
+        // Assign customerID
         college = ui->lineEdit_CollegeName->text();
         traditionalSouvenir = ui->lineEdit_TraditionalSouvenir->text();
         cost = ui->lineEdit_Cost->text();

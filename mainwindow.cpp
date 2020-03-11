@@ -45,13 +45,17 @@ void MainWindow::on_pushButton_Load_clicked()
     myDb.conOpen();
 
     QSqlQuery *qry = new QSqlQuery(mySqLiteDb);
+
     qry->prepare("SELECT * FROM saddleback WHERE startingCollege=\"Saddleback College\"");
     qry->exec();
     modal->setQuery(*qry);
     ui->tableViewSaddleback->setModel(modal);
     ui->tableViewSaddleback->resizeColumnsToContents();
-    myDb.conClose();
+    modal->setHeaderData(0, Qt::Horizontal, QObject::tr("Starting College"));
+    modal->setHeaderData(1, Qt::Horizontal, QObject::tr("Ending College"));
+    modal->setHeaderData(2, Qt::Horizontal, QObject::tr("Distance"));
     qDebug()<<(modal->rowCount());
+    myDb.conClose();
 }
 
 void MainWindow::on_pushButton_Login_clicked()
@@ -60,13 +64,13 @@ void MainWindow::on_pushButton_Login_clicked()
     QString password = ui->lineEdit_Password->text();
     if(username == "test" && password == "test")
     {
-      QMessageBox::information(this, "Login", "Username and password is correct");
+        QMessageBox::information(this, "Login", "Username and password is correct");
         hide();
         admin = new AdminWindow(this);
         admin->show();
     }
     else {
-     QMessageBox::warning(this, "Login", "Username and password is not correct");
+        QMessageBox::warning(this, "Login", "Username and password is not correct");
 
     }
 }
@@ -80,7 +84,7 @@ void MainWindow::on_pushButton_ListSouvenirs_clicked()
     QString currentText = ui->comboBoxSouvenirsFColleges->currentText();
     if(currentText =="California State University, Fullerton")
     {
-         qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"California State University, Fullerton\"");
+        qry->prepare("SELECT traditionalSouvenir, cost FROM souvenirs WHERE college=\"California State University, Fullerton\"");
     }
     else if(currentText =="Massachusetts Institute of Technology (MIT)")
     {
@@ -127,8 +131,11 @@ void MainWindow::on_pushButton_ListSouvenirs_clicked()
     modal->setQuery(*qry);
     ui->tableViewSaddleback->setModel(modal);
     ui->tableViewSaddleback->resizeColumnsToContents();
-    myDb.conClose();
+    ui->tableViewSaddleback->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    modal->setHeaderData(0, Qt::Horizontal, QObject::tr("Traditional Souvenir"));
+    modal->setHeaderData(1, Qt::Horizontal, QObject::tr("Cost"));
     qDebug()<<(modal->rowCount());
+    myDb.conClose();
 }
 
 

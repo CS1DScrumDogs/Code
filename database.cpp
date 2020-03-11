@@ -12,7 +12,7 @@ void Database::conClose()
 bool Database::conOpen()
 {
     mySqLiteDb = QSqlDatabase::addDatabase("QSQLITE");
-    mySqLiteDb.setDatabaseName("C:/sqlite3/ScrumDogs.db");
+    mySqLiteDb.setDatabaseName("/Users/tannercordero/ScrumDogs.db");
     if(!mySqLiteDb.open())
     {
         qDebug() << ("Database Not connected");

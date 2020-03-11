@@ -8,7 +8,7 @@
 #include <QSqlQuery>
 #include <QTableView>
 #include <QMessageBox>
-#include<QSqlDatabase>
+#include <QSqlDatabase>
 #include "Database.h"
 namespace Ui {class AdminWindow;}
 class AdminWindow : public QDialog
