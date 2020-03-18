@@ -65,7 +65,8 @@ void MainWindow::on_pushButton_Login_clicked()
         admin = new AdminWindow(this);
         admin->show();
     }
-    else {
+    else
+    {
      QMessageBox::warning(this, "Login", "Username and password is not correct");
 
     }
@@ -138,7 +139,7 @@ void MainWindow::on_pushButton_UCI_clicked()
     start.name = "University of California, Irvine (UCI)";
     start.distance = 16;
 
-    cw.showColleges(start);
+    cw.initializeStart(start);
     cw.exec();
 }
 
@@ -149,7 +150,13 @@ void MainWindow::on_pushButton_ACU_clicked()
     start.name = "Arizona State University";
     start.distance = 379;
 
-    cw.showColleges(start);
+    cw.initializeStart(start);
     cw.exec();
 
+}
+
+void MainWindow::on_pushButton_CustomTrip_clicked()
+{
+    collegeWidget cw(this);
+    //cw.exec();
 }
