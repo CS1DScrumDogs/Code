@@ -131,29 +131,25 @@ void MainWindow::on_pushButton_ListSouvenirs_clicked()
     qDebug()<<(modal->rowCount());
 }
 
-
-
 void MainWindow::on_pushButton_UCI_clicked()
 {
     collegeWidget cw(this);
-    QVector<College> testVect;
+    College start;
+    start.name = "University of California, Irvine (UCI)";
+    start.distance = 16;
 
-    //cw.recursiveSort();
-    cw.showColleges();
+    cw.showColleges(start);
     cw.exec();
-
-
-    testVect = college.getColleges();
-
-    qDebug() << "Testing vector";
-    for (int i = 0; i < testVect.size(); i++)
-    {
-        qDebug() << testVect[i].name << " " << testVect[i].distance;
-    }
-
 }
 
 void MainWindow::on_pushButton_ACU_clicked()
 {
+    collegeWidget cw(this);
+    College start;
+    start.name = "Arizona State University";
+    start.distance = 379;
+
+    cw.showColleges(start);
+    cw.exec();
 
 }

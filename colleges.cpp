@@ -21,11 +21,11 @@ QVector<College> colleges::getColleges()
     qry.prepare("SELECT endingCollege, distanceBetween FROM saddleback");
     QVector<College> campusList;
 
+    College cc;
     if (qry.exec())
     {
         while (qry.next())
         {
-            College cc;
             cc.name = qry.value(0).toString();
             cc.distance = qry.value(1).toDouble();
 
@@ -37,10 +37,14 @@ QVector<College> colleges::getColleges()
        qDebug() << "Failed!";
     }
 
+    cc.name = "Saddleback College";
+    cc.distance =  17;
+    campusList.push_back(cc);
+
     return campusList;
 }
 
-QVector<Distances> getDistances()
+QVector<Distances> colleges::getDistances()
 {
     QSqlQuery qry;
     qry.prepare("SELECT *FROM distances");
@@ -55,13 +59,12 @@ QVector<Distances> getDistances()
             dd.end = qry.value(1).toString();
             dd.distance = qry.value(2).toDouble();
 
-
             distanceList.push_back(dd);
         }
     }
     else
     {
-       qDebug() << "Failed!";
+       qDebug() << "Failed! to get distances.";
     }
 
     return distanceList;

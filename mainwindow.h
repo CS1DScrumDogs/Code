@@ -23,7 +23,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 public:
-    dataBase myDb;
+    Database myDb;
     QSqlDatabase mySqLiteDb;
     colleges college;
 
