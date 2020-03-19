@@ -1,4 +1,4 @@
-#include "Database.h"
+#include "database.h"
 
 // Constructor
 // Parameterized constructor

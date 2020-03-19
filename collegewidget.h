@@ -30,6 +30,8 @@ private slots:
     void on_pushButtonClear_clicked();
     void on_push_EnterNum_clicked();
 
+    void on_pushButtonTour_clicked();
+
 private:
     Ui::collegeWidget *ui;
     QString startCollege;

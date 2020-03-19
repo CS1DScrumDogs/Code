@@ -56,6 +56,13 @@
      </layout>
     </item>
     <item>
+     <widget class="QPushButton" name="pushButtonTour">
+      <property name="text">
+       <string>Show Tour</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="pushButtonClear">
       <property name="text">
        <string>Clear</string>
@@ -64,7 +71,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>720</x>
@@ -85,6 +92,9 @@
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
        <widget class="QSpinBox" name="spinBox_NumCol">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="maximum">
          <number>13</number>
         </property>
@@ -92,6 +102,9 @@
       </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="push_EnterNum">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Enter</string>
         </property>

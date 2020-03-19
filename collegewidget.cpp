@@ -6,6 +6,7 @@ collegeWidget::collegeWidget(QWidget *parent) :
     ui(new Ui::collegeWidget)
 {
     QStringList names;
+    maxColleges = 10;
     names << "Begin" << "End" << "Distance";
     ui->setupUi(this);
     setWindowTitle("College Tour");
@@ -21,6 +22,11 @@ collegeWidget::~collegeWidget()
 void collegeWidget::initializeStart(College str)
 {
     startCollege = str.name;
+    if (startCollege == "Arizona State University")
+    {
+        ui->push_EnterNum->setEnabled(true);
+        ui->spinBox_NumCol->setEnabled(true);
+    }
 }
 // -----------------------------------------------------
 void collegeWidget::showColleges()
@@ -197,7 +203,9 @@ bool collegeWidget::containsCollege(QString n)
 // -----------------------------------------------------
 void collegeWidget::on_pushButtonClear_clicked()
 {
-    ui->tableWidgetColleges->clearContents();
+    ui->tableWidgetColleges->clear();
+    ui->tableWidgetColleges->setShowGrid(false);
+
 }
 // -----------------------------------------------------
 void collegeWidget::on_push_EnterNum_clicked()
@@ -208,6 +216,10 @@ void collegeWidget::on_push_EnterNum_clicked()
         maxColleges = 10;
     }
     qDebug() << "testing max: " << maxColleges;
-    showColleges();
 }
-
+// -----------------------------------------------------
+void collegeWidget::on_pushButtonTour_clicked()
+{
+    showColleges();
+    ui->pushButtonTour->setEnabled(false);
+}

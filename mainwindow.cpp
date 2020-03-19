@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "collegewidget.h"
+#include "customtour.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -152,11 +153,15 @@ void MainWindow::on_pushButton_ACU_clicked()
 
     cw.initializeStart(start);
     cw.exec();
-
 }
 
 void MainWindow::on_pushButton_CustomTrip_clicked()
 {
-    collegeWidget cw(this);
-    //cw.exec();
+    customTour cw(this);
+    qDebug() << isActiveWindow();
+    cw.exec();
+
+
+
+    //ctWid.showMaximized();
 }

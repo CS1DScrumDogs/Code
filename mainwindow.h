@@ -3,13 +3,12 @@
 
 #include <QMainWindow>
 #include <QtSql>
-#include<QSqlDatabase>
-#include<QMessageBox>
+#include <QSqlDatabase>
+#include <QMessageBox>
 #include <QSqlQuery>
 #include "adminwindow.h"
 #include "database.h"
 #include "colleges.h"
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

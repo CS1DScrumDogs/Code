@@ -20,12 +20,14 @@ SOURCES += \
     adminwindow.cpp \
     colleges.cpp \
     collegewidget.cpp \
+    customtour.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     Database.h \
     adminwindow.h \
+    customtour.h \
     mainwindow.h \
     colleges.h \
     collegewidget.h \
@@ -34,6 +36,7 @@ HEADERS += \
 FORMS += \
     adminwindow.ui \
     collegewidget.ui \
+    customtour.ui \
     mainwindow.ui
 
 # Default rules for deployment.
