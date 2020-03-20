@@ -34,7 +34,14 @@ void collegeWidget::showColleges()
     int fill;
     double totalDist = 0.0;
 
-    compareStore();
+    if (customPassed)
+    {
+        getCustomTour(routeDist, startCollege, maxColleges);
+    }
+    else
+    {
+        compareStore();
+    }
 
     for (int i = 0; i < finalRoute.length(); i++)
     {
@@ -199,6 +206,142 @@ bool collegeWidget::containsCollege(QString n)
         }
     }
     return false;
+}
+// -----------------------------------------------------
+void collegeWidget::getCustomTour(QVector<Distances>v, QString s, int n)
+{
+    maxColleges = n;
+    startCollege = s;
+    colleges col;
+    QString dontgoback;
+    QVector<Distances>temp = v;
+    QVector<Distances>distancessss = col.getDistances();
+    QVector<Distances>testingDist;
+    Distances distObj;
+
+    int index;
+    for (int i = 0; i < temp.length() - 1; i++)
+    {
+        distObj.beg = startCollege;
+        if (i < temp.length() - 1)
+        {
+            distObj.end = temp[i+1].beg;
+        }
+        distObj.distance = 0;
+        startCollege = distObj.beg;
+        temp.replace(i,distObj);
+        index = i;
+    }
+    temp.removeAt(index+1);
+    //----------------------------------------
+    for (int i = 0; i < distancessss.length(); i++)
+    {
+        if (distancessss[i].beg == startCollege)
+        {
+            distObj.beg = distancessss[i].beg;
+            distObj.end = distancessss[i].end;
+            distObj.distance = distancessss[i].distance;
+            testingDist.push_back(distObj);
+        }
+    }
+    //----------------------------------------
+    for (int i = 0; i < temp.length(); i++)
+    {
+        for (int j = 0; j < testingDist.length(); j++)
+        {
+            if (temp[i].beg == testingDist[j].beg && temp[i].end == testingDist[j].end)
+            {
+                distObj.beg = testingDist[j].beg;
+                distObj.end = testingDist[j].end;
+                distObj.distance = testingDist[j].distance;
+                temp.replace(i,distObj);
+            }
+        }
+    }
+
+    recursiveDist(temp);
+    //---------------------------------------------
+    distObj.beg = fastestDist[0].beg;
+    distObj.end = fastestDist[0].end;
+    distObj.distance = fastestDist[0].distance;
+
+    customRoute.push_back(distObj);
+    startCollege = distObj.end;
+    fastestDist.removeAt(0);
+    //----------------------------------------------------------------------------------------------------
+    temp = fastestDist;
+    fastestDist.clear();
+    qDebug() << "temp test";
+    for(int i = 0; i < temp.length(); i++)
+    qDebug() << temp[i].beg << " " << temp[i].end << " " << temp[i].distance;
+
+
+    while (customRoute.length() < maxColleges - 1)
+    {
+        for (int i = 0; i < temp.length(); i++)
+        {
+            distObj.beg = startCollege;
+            distObj.end = temp[i].end;
+            distObj.distance = 0;
+            temp.replace(i,distObj);
+        }
+        //--------
+        for (int i = 0; i < distancessss.length(); i++)
+        {
+            if (distancessss[i].beg == startCollege)
+            {
+                distObj.beg = distancessss[i].beg;
+                distObj.end = distancessss[i].end;
+                distObj.distance = distancessss[i].distance;
+                testingDist.push_back(distObj);
+            }
+        }
+        //---------
+        for (int i = 0; i < temp.length(); i++)
+        {
+            for (int j = 0; j < testingDist.length(); j++)
+            {
+                if (temp[i].beg == testingDist[j].beg && temp[i].end == testingDist[j].end)
+                {
+                    distObj.beg = testingDist[j].beg;
+                    distObj.end = testingDist[j].end;
+                    distObj.distance = testingDist[j].distance;
+                    temp.replace(i,distObj);
+                }
+            }
+        }
+        recursiveDist(temp);
+        //---------------
+        distObj.beg = fastestDist[0].beg;
+        distObj.end = fastestDist[0].end;
+        distObj.distance = fastestDist[0].distance;
+
+        customRoute.push_back(distObj);
+        startCollege = distObj.end;
+        fastestDist.removeAt(0);
+
+        temp = fastestDist;
+        fastestDist.clear();
+    }
+    //------------------------------------------------------------------------------
+
+    finalRoute = customRoute;
+
+//    qDebug() << "custom test";
+//    for(int i = 0; i < finalRoute.length(); i++)
+//    qDebug() << finalRoute[i].beg << " " << finalRoute[i].end << " " << finalRoute[i].distance;
+
+}
+void collegeWidget::setRoute(QVector<Distances>v, QString s, int n)
+{
+    maxColleges = n;
+    startCollege = s;
+    routeDist = v;
+    customPassed = true;
+}
+QVector<Distances> collegeWidget::getRoute()
+{
+    return finalRoute;
 }
 // -----------------------------------------------------
 void collegeWidget::on_pushButtonClear_clicked()

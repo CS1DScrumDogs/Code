@@ -54,7 +54,7 @@ void customTour::on_pushButtonNames_clicked()
     {
         lessThen = false;
     }
-    if (notAdded && lessThen)
+    if ((notAdded && lessThen) && collegeName != "Select College")
     {
         ui->listWidgetTour->addItem(collegeName);
         dd.beg = collegeName;
@@ -69,6 +69,10 @@ void customTour::on_pushButtonNames_clicked()
         {
             QMessageBox::warning(this, tr("Error!"), "College exceeds entered limit!");
         }
+        else if(collegeName == "Select College")
+        {
+            QMessageBox::warning(this, tr("Error!"), collegeName + " not Valid!");
+        }
         else
         {
             QMessageBox::warning(this, tr("Error!"), collegeName + " already exists!");
@@ -80,22 +84,31 @@ void customTour::on_pushButtonTour_clicked()
 {
     for(int i = 0; i < colleges.length(); i++)
     qDebug() << colleges[i].beg << " " << colleges[i].end << " " << colleges[i].distance;
+    passColleges();
     collegeWidget cw(this);
     cw.exec();
 }
 // -----------------------------------------------------
+// sets the start college
 void customTour::on_pushButtonStart_clicked()
 {
     Distances dd;
     startCollege = ui->comboBoxNames->currentText();
-    if (count == 0)
+    if (count == 0 && startCollege != "Select College")
     {
         dd.beg = startCollege;
         dd.distance = 0;
         colleges.push_back(dd);
         ui->listWidgetTour->addItem(startCollege);
         count++;
+        ui->pushButtonStart->setEnabled(false);
+        ui->pushButtonNames->setEnabled(true);
     }
-    ui->pushButtonStart->setEnabled(false);
-    ui->pushButtonNames->setEnabled(true);
+}
+// -----------------------------------------------------
+// used to pass the vector to collegewidget
+void customTour::passColleges()
+{
+    collegeWidget temp;
+    temp.setRoute(colleges, startCollege, numCollege);
 }

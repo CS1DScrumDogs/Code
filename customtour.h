@@ -27,6 +27,7 @@ private slots:
     void on_pushButtonTour_clicked();
 
     void on_pushButtonStart_clicked();
+    void passColleges();
 
 private:
     Ui::customTour *ui;
@@ -36,7 +37,6 @@ private:
     QString startCollege;
     colleges testC;
     QVector<Distances> colleges;
-
 };
 
 #endif // CUSTOMTOUR_H

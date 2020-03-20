@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSpinBox>
 #include "colleges.h"
+#include "customtour.h"
 
 namespace Ui {
 class collegeWidget;
@@ -20,6 +21,9 @@ public:
     void initializeStart(College str);
     void recursiveDist(QVector<Distances>&v);
     double findRouteDist(QVector<Distances>&v, int n);
+    void getCustomTour(QVector<Distances>v, QString s, int n);
+    void setRoute(QVector<Distances>v, QString s, int n);
+    QVector<Distances> getRoute();
 
     bool containsCollege(QString n);
     void compareStore();
@@ -37,9 +41,12 @@ private:
     QString startCollege;
     int maxColleges;
     colleges co;
+    customTour customObj;
+    bool customPassed = false;
     QVector<Distances> routeDist;
     QVector<Distances> fastestDist;
     QVector<Distances> finalRoute;
+    QVector<Distances> customRoute;
 };
 
 #endif // COLLEGEWIDGET_H
