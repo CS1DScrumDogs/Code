@@ -23,8 +23,8 @@ Transaction::Transaction(College college, souvenirItem itemPurchased)
  */
 bool Transaction::operator==(Transaction& other)
 {
-    return ((other.itemPurchased.traditionalSouvenir == this->itemPurchased.traditionalSouvenir)
-            && (other.college.collegeId == this->college.collegeId));
+    return ((other.itemPurchased.name == this->itemPurchased.name)
+            && (other.college.id == this->college.id));
 }
 
 
@@ -55,7 +55,7 @@ void Cart::printCart()
 
         while(index < purchases.size())
         {
-            if (purchases[index].college.collegeId != college.collegeId)
+            if (purchases[index].college.id != college.id)
             {
                 college = purchases[index].college;
             }
@@ -100,7 +100,7 @@ double Cart::getTotal()
     double total = 0;
     for (int index=0; index < purchases.size(); index++)
     {
-        total += purchases[index].itemPurchased.cost;
+        total += purchases[index].itemPurchased.price;
     }
     return total;
 }

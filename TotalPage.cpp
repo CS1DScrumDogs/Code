@@ -16,7 +16,7 @@ TotalPage::TotalPage(Cart cartInfo, QWidget *parent) :
     QVector<Transaction> purchases = cart.getPurchases();
 
     College currentCollege = purchases.front().college;
-    QListWidgetItem *newLabel = new QListWidgetItem("Cart for college: " + currentCollege.collegeName);
+    QListWidgetItem *newLabel = new QListWidgetItem("Cart for college: " + currentCollege.name);
 
 
     newLabel->setBackground(Qt::darkGreen);
@@ -24,18 +24,18 @@ TotalPage::TotalPage(Cart cartInfo, QWidget *parent) :
     double collegeTotal = 0;
     for (int index = 0; index < cart.size(); index++)
     {
-        if (purchases[index].college.collegeId != currentCollege.collegeId)
+        if (purchases[index].college.id != currentCollege.id)
         {
             ui->TotalPagelist->addItem("Total: $" + QString::number(collegeTotal, 'f', 2) + "\n");
             collegeTotal = 0;
             currentCollege = purchases[index].college;
-            QListWidgetItem* newLabel = new QListWidgetItem("Shopping cart for college: " + currentCollege.collegeName);
+            QListWidgetItem* newLabel = new QListWidgetItem("Shopping cart for college: " + currentCollege.name);
             newLabel->setBackground(Qt::darkGreen);
             ui->TotalPagelist->addItem(newLabel);
         }
         souvenirItem itemPurchased = purchases[index].itemPurchased;
-        collegeTotal += itemPurchased.cost;
-        ui->TotalPagelist->addItem("  °  " + itemPurchased.traditionalSouvenir + " - $" + QString::number(itemPurchased.cost, 'f', 2));
+        collegeTotal += itemPurchased.price;
+        ui->TotalPagelist->addItem("  °  " + itemPurchased.name + " - $" + QString::number(itemPurchased.price, 'f', 2));
 
     }
     ui->TotalPagelist->addItem("Subtotal: $" + QString::number(collegeTotal, 'f', 2) + "\n");
