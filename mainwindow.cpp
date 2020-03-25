@@ -3,6 +3,8 @@
 #include "CollegeTour.h"
 #include "Maintenance.h"
 #include "ui_mainwindow.h"
+#include <iostream>
+#include <string>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -228,92 +230,10 @@ void MainWindow::on_DisplaySouvenirWidget_doubleClicked(const QModelIndex &index
  */
 void MainWindow::on_UploadCollegeButton_clicked()
 {
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setNameFilter(tr("NewCampuses(*.csv)"));
-    QStringList fileName; // There should only be one uploaded file
-    if (dialog.exec()) {
-        fileName = dialog.selectedFiles();
-    } else
-    {
-        QMessageBox errorMsg;
-        errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
-        errorMsg.exec();
-        return;
-    }
 
-    qDebug() << fileName.front();
-    QFile inputFile(fileName.front());
-    if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        qDebug() << "File opened successfully";
-    }
-    else
-    {
-        QMessageBox errorMsg;
-        errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
-        errorMsg.exec();
-        return;
-    }
-    QTextStream in(&inputFile);
-    QStringList parts;
-    while (!in.atEnd())
-    {
-        // Read college name
-        QString line = in.readLine();
-        parts = line.split(": ");
-        QString collegeName = parts.back(); // Saves the college name
-        qDebug() << "College name: " << collegeName;
-        // Read College ID
-        line = in.readLine();
-        int college_ID = line.toInt();
-        qDebug() << college_ID;
-
-        QVector<Distance> distances;
-        for (int index=0; index < 13; index++)
-        {
-            // read in all the distances related to this current college
-            line = in.readLine();
-            parts = line.split(" ");
-            qDebug() << "Distance to ID: " << parts.front() << ": " << parts.back();
-            if (parts.back().toDouble() != 0.0)
-            {
-                // All the distances related to the college_ID read in above this for loop
-                Distance newDistance;
-                newDistance.destinationCollege_ID = parts.front().toInt();
-                newDistance.distanceTo = parts.back().toDouble();
-                distances.push_back(newDistance);
-            }
-        }
-        double distanceToSaddleback = parts.back().toDouble();
-        line  = in.readLine();
-        parts = line.split(": ");
-        int itemsSize = parts.back().toInt();
-
-        QVector<souvenirItem> items;
-        for (int index = 0; index < itemsSize; index++)
-        {
-            // Read in the item name and price and split
-            line  = in.readLine();
-            parts = line.split(" ");
-
-            QString itemName  = parts.front();
-            double  itemPrice = parts.back().toDouble();
-
-            souvenirItem newItem;
-            newItem.name  = itemName;
-            newItem.price = itemPrice;
-            items.push_back(newItem);
-            qDebug() << "Pushing new souvenir item: " << newItem.name;
-        }
-
-        College newCollege(college_ID, collegeName, distanceToSaddleback, items);
-
-        Database::getInstance()->addCollege(newCollege, distances);
-
-        // Skip this line for new colleges
-        line = in.readLine();
-    }
+//    Database::getInstance()->addCollegesTable();
+//    Database::getInstance()->addDistancesTable();
+    Database::getInstance()->addSouvenirsTable();
     populateMenu();
 }
 /*!

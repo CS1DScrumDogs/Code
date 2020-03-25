@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>10</y>
       <width>801</width>
       <height>581</height>
      </rect>
@@ -30,85 +30,78 @@
      <number>0</number>
     </property>
     <widget class="QWidget" name="MainPage">
-     <widget class="QWidget" name="verticalLayoutWidget_4">
+     <widget class="QPushButton" name="CustomTripButton">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>230</y>
-        <width>761</width>
-        <height>201</height>
+        <x>20</x>
+        <y>330</y>
+        <width>171</width>
+        <height>41</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QPushButton" name="AdminPageButton">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(83, 167, 124);</string>
-         </property>
-         <property name="text">
-          <string>Admin Page</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QPushButton" name="ShortestTripButton">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(83, 167, 124);</string>
-           </property>
-           <property name="text">
-            <string>Shortest Trip</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="CustomTripButton">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(83, 167, 124);</string>
-           </property>
-           <property name="text">
-            <string>Start Custom Trip</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="SaddlebackTripButton">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(83, 167, 124);</string>
-           </property>
-           <property name="text">
-            <string>Saddleback Trip</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="ASUTripButton">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(83, 167, 124);</string>
-           </property>
-           <property name="text">
-            <string>ASU Trip</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(83, 167, 124);</string>
+      </property>
+      <property name="text">
+       <string>Start Custom Trip</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ASUTripButton">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>330</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(83, 167, 124);</string>
+      </property>
+      <property name="text">
+       <string>ASU Trip</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ShortestTripButton">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>330</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(83, 167, 124);</string>
+      </property>
+      <property name="text">
+       <string>Shortest Trip</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="AdminPageButton">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>330</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(83, 167, 124);</string>
+      </property>
+      <property name="text">
+       <string>Admin Page</string>
+      </property>
      </widget>
      <widget class="QLabel" name="WelcomeLabel">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>160</x>
         <y>80</y>
-        <width>749</width>
-        <height>76</height>
+        <width>501</width>
+        <height>111</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(83, 167, 124);</string>
@@ -116,8 +109,21 @@
       <property name="text">
        <string>Welcome to College Tour Planner!</string>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+     </widget>
+     <widget class="QPushButton" name="SaddlebackTripButton">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>260</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(83, 167, 124);</string>
+      </property>
+      <property name="text">
+       <string>SaddlebackTrip</string>
       </property>
      </widget>
     </widget>
@@ -136,9 +142,6 @@
       </property>
       <property name="text">
        <string>Choose Your Starting College!</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="gridLayoutWidget">
@@ -308,9 +311,6 @@
       <property name="text">
        <string>Login to Access the Maintenance Page</string>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="MaintenancePage">
@@ -380,9 +380,6 @@
       <property name="text">
        <string>Welcome to the Maintenance Page</string>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget_3">
       <property name="geometry">
@@ -425,7 +422,7 @@
      <x>0</x>
      <y>0</y>
      <width>806</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

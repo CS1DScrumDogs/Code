@@ -1,4 +1,11 @@
 #include "Database.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <QFileDialog>
+#include <QFile>
+#include <QInputDialog>
+
 
 Database* Database::instance = nullptr;
 /*!
@@ -8,7 +15,7 @@ Database* Database::instance = nullptr;
 Database::Database()
 {
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName("/Users/tannercordero/Desktop/Code-suhyr 3/ScrumDogs.db");
+    database.setDatabaseName("ScrumDogs.db");
 
     if(!database.open())
     {
@@ -240,48 +247,124 @@ QVector<Distance> Database::getDistancesFrom(int startingCollegeID)
  * \param college - A struct argument
  * \param distances - A QVector argument
  */\
-void Database::addCollege(College college, QVector<Distance> distances)
+void Database::addCollegesTable()
 {
-    QSqlQuery query;
-    QSqlQuery souvenirItemsQuery;
+    QSqlQuery distancesQuery;
+    QSqlQuery souvenirQuery;
 
-    // Adds the college name, ID, and distanceToSaddleback to colleges table in database
-    query.prepare("INSERT INTO colleges (ID, collegeName, DistanceToSaddleback) VALUES(:id, :name, :distanceToSaddleback)");
-    query.bindValue(":id", college.id);
-    query.bindValue(":distanceToSaddleback", college.distanceToSaddleback);
-    query.bindValue(":name", college.name);
-
-
-    // Adds all the colleges menu items to the menu_items table
-    for (int index=0; index < college.souvenirItems.size(); index++)
+    std::string collegeName;
+    float DistanceToSaddleback;
+    QString fileName = "newCampus_Colleges.txt";
+    QFile file(fileName);
+    std::ifstream inFile;
+    inFile.open(fileName.toStdString());
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        souvenirItemsQuery.prepare("INSERT INTO menu_items (Name, Price, College_ID) VALUES(:name, :price, :collegeID)");
-        souvenirItemsQuery.bindValue(":name", college.souvenirItems[index].name);
-        souvenirItemsQuery.bindValue(":price", college.souvenirItems[index].price);
-        souvenirItemsQuery.bindValue(":collegeID", college.id);
-        souvenirItemsQuery.exec();
-    }
-
-    // Add distances for the college being added
-    for (int index=0; index < distances.size(); index++)
-    {
-
-        query.prepare("INSERT INTO distances (startingCollegeID, endingCollegeID, distanceBetween) VALUES(:startingCollegeID, :endingCollegeID, :distanceBetween)");
-        query.bindValue(":startingCollegeID", college.id);
-        query.bindValue(":endingCollegeID", distances[index].destinationCollege_ID);
-        query.bindValue(":distanceBetween", distances[index].distanceTo);
-        qDebug() << "Inserting distance from " << college.id << " to: " << distances[index].destinationCollege_ID;
-        query.exec();
-
-        query.prepare("INSERT INTO distances (startingCollegeID, endingCollegeID, distanceBetween) VALUES(:startingCollegeID, :endingCollegeID, :distanceBetween)");
-        query.bindValue(":startingCollegeID", distances[index].destinationCollege_ID);
-        query.bindValue(":endingCollegeID", college.id);
-        query.bindValue(":distanceBetween", distances[index].distanceTo);
-        qDebug() << "Inserting distance from " << distances[index].destinationCollege_ID<< " to: " << college.id;
-        query.exec();
+        QMessageBox errorMsg;
+        errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
+        errorMsg.exec();
+        return;
+    }else{
+        while(inFile) {
+            // Read college name
+            getline(inFile, collegeName);
+            inFile >> DistanceToSaddleback;
+            inFile.ignore(10000,'\n');
+            QString college_name = QString::fromStdString(collegeName);
+            QSqlQuery collegesQuery;
+            // Adds the college name, ID, and distanceToSaddleback to colleges table in database
+            collegesQuery.prepare("INSERT INTO colleges (ID, collegeName, DistanceToSaddleback) VALUES(:name, :distanceToSaddleback)");
+            collegesQuery.bindValue(":name", college_name);
+            collegesQuery.bindValue(":distanceToSaddleback", DistanceToSaddleback);
+            qDebug() << "Inserting college " << college_name << " to saddleback: " << DistanceToSaddleback;
+            collegesQuery.exec();
+        }
+        file.close();
     }
 }
+/*! To add a new college to database
+ * \brief dbManager::addCollege
+ * Will use input college information to add it to databse
+ * \param college - A struct argument
+ * \param distances - A QVector argument
+ */\
+void Database::addDistancesTable()
+{
+    int startingCollegeID;
+    int endingCollegeID;
+    float distanceBetween;
+    QString fileName = "newCampus_Distances.txt";
+    QFile file(fileName);
+    std::ifstream inFile;
+    inFile.open(fileName.toStdString());
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QMessageBox errorMsg;
+        errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
+        errorMsg.exec();
+        return;
+    }else{
+        while(inFile) {
+            // Read college name
+            inFile >> startingCollegeID;
+            inFile >> endingCollegeID;
+            inFile >> distanceBetween;
+            QSqlQuery distancesQuery;
+            // Adds the college name, ID, and distanceToSaddleback to colleges table in database
+            distancesQuery.prepare("INSERT INTO distances (startingCollegeID, endingCollegeID, distanceBetween)"
+                                   "VALUES(:startingCollegeID, :endingCollegeID, :distanceBetween)");
+            distancesQuery.bindValue(":startingCollegeID",startingCollegeID);
+            distancesQuery.bindValue(":endingCollegeID", endingCollegeID);
+            distancesQuery.bindValue(":distanceBetween", distanceBetween);
+            qDebug() << "Inserting distance from " << startingCollegeID  << " to: " <<  endingCollegeID << " is " << distanceBetween;
+            distancesQuery.exec();
+        }
+        file.close();
 
+    }
+}
+/*! To add a new college to database
+ * \brief dbManager::addCollege
+ * Will use input college information to add it to databse
+ * \param college - A struct argument
+ * \param distances - A QVector argument
+ */\
+void Database::addSouvenirsTable()
+{
+    int collegeID;
+    std::string traditionalSouvenir;
+    float cost;
+    //  QString fileName = "newCampus_Souvenirs.txt";
+    QFile file("newCampus_Souvenirs.txt");
+    std::ifstream inFile;
+    inFile.open("newCampus_Souvenirs.txt");
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        QMessageBox errorMsg;
+        errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
+        errorMsg.exec();
+        return;
+    }else{
+        while(inFile) {
+            // Read college name
+            inFile >> collegeID;
+            getline(inFile, traditionalSouvenir);
+            inFile >> cost;
+            inFile.ignore(10000,'\n');
+            QString traditional_souvenir = QString::fromStdString(traditionalSouvenir);
+            QSqlQuery souvenirQuery;
+            // Adds the college name, ID, and distanceToSaddleback to colleges table in database
+            souvenirQuery.prepare("INSERT INTO souvenirs (id, collegeID, traditionalSouvenir, cost) VALUES(collegeID, traditional_souvenir, :cost)");
+            souvenirQuery.bindValue(":startingCollegeID", collegeID);
+            souvenirQuery.bindValue(":endingCollegeID", traditional_souvenir);
+            souvenirQuery.bindValue(":distanceBetween", cost);
+            qDebug() << "Inserting souvenir from " << collegeID << " names " << traditional_souvenir << "that costs $" << cost;
+            souvenirQuery.exec();
+        }
+        file.close();
+
+    }
+}
 /*! To add souvenir item to database
  * \brief dbManager::addSouvenirItem
  * Adds souvenir item to records based on input
@@ -292,7 +375,7 @@ void Database::addCollege(College college, QVector<Distance> distances)
 void Database::addSouvenirItem(souvenirItem newSouvenir, College collegeAddingTo)
 {
     QSqlQuery souvenirItemQuery;
-    souvenirItemQuery.prepare("INSERT INTO souvenirs (traditionalSouvenir, cost, collegeID) VALUES(:name, :cost, :collegeID)");
+    souvenirItemQuery.prepare("INSERT INTO souvenirs ( id, collegeId, traditionalSouvenir, cost) VALUES(collegeId, :name, :cost)");
     souvenirItemQuery.bindValue(":name", newSouvenir.name);
     souvenirItemQuery.bindValue(":price", newSouvenir.price);
     souvenirItemQuery.bindValue(":collegeID", collegeAddingTo.id);

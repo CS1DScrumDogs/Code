@@ -44,9 +44,6 @@
         <property name="text">
          <string>Total $0</string>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
        </widget>
       </item>
       <item>
@@ -80,9 +77,6 @@
      </property>
      <property name="text">
       <string>Collge Name</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="NextCollegeButton">
@@ -144,9 +138,6 @@
      </property>
      <property name="text">
       <string>Trip Distance: 0 miles</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QGroupBox" name="SouvenirsGroupBox">

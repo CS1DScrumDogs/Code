@@ -21,9 +21,10 @@ public:
     College getCollegeByID(int college_ID);              //! Searches for college by college ID
     souvenirItem getSouvenirByID(int souvenirItem_ID);  //! Searches for souvenir by college ID
     QVector<Distance> getDistancesFrom(int sourceCollege_ID);   //! Checks distances between colleges
-
-    void addCollege(College college, QVector<Distance> distances);      //! Adds college to database
-    void addSouvenirItem(souvenirItem newSouvenir, College toAddTo);    //! Adds souvenir item to database
+    void addCollegesTable();//! Adds college to colllege table in the database
+    void addDistancesTable();//! Adds distances to distances table in the database
+    void addSouvenirsTable();//! Adds souvenirs to souvenirs table int the database
+    void addSouvenirItem(souvenirItem newSouvenir, College toAddTo); //! Adds souvenir item to database
 
     void modifySouvenirItem(souvenirItem newSouvenir);  //! Modifies information of specific souvenir item in database
 
