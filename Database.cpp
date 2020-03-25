@@ -8,7 +8,7 @@ Database* Database::instance = nullptr;
 Database::Database()
 {
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName("ScrumDogs.db");
+    database.setDatabaseName("/Users/tannercordero/Desktop/Code-suhyr 3/ScrumDogs.db");
 
     if(!database.open())
     {
