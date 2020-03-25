@@ -1,0 +1,11 @@
+release/Cart.o
+release/CollegeTour.o
+release/Database.o
+release/Maintenance.o
+release/TotalPage.o
+release/main.o
+release/mainwindow.o
+release/moc_CollegeTour.o
+release/moc_Maintenance.o
+release/moc_TotalPage.o
+release/moc_mainwindow.o

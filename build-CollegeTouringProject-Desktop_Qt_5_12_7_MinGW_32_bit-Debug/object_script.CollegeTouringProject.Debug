@@ -1,0 +1,11 @@
+debug/Cart.o
+debug/CollegeTour.o
+debug/Database.o
+debug/Maintenance.o
+debug/TotalPage.o
+debug/main.o
+debug/mainwindow.o
+debug/moc_CollegeTour.o
+debug/moc_Maintenance.o
+debug/moc_TotalPage.o
+debug/moc_mainwindow.o
