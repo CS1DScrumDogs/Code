@@ -231,8 +231,8 @@ void MainWindow::on_DisplaySouvenirWidget_doubleClicked(const QModelIndex &index
 void MainWindow::on_UploadCollegeButton_clicked()
 {
 
-//    Database::getInstance()->addCollegesTable();
-//    Database::getInstance()->addDistancesTable();
+    Database::getInstance()->addCollegesTable();
+    Database::getInstance()->addDistancesTable();
     Database::getInstance()->addSouvenirsTable();
     populateMenu();
 }

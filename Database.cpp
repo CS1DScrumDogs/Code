@@ -249,16 +249,11 @@ QVector<Distance> Database::getDistancesFrom(int startingCollegeID)
  */\
 void Database::addCollegesTable()
 {
-    QSqlQuery distancesQuery;
-    QSqlQuery souvenirQuery;
-
     std::string collegeName;
     float DistanceToSaddleback;
-    QString fileName = "newCampus_Colleges.txt";
-    QFile file(fileName);
     std::ifstream inFile;
-    inFile.open(fileName.toStdString());
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    inFile.open("newCampus_Colleges.txt");
+    if(!inFile)
     {
         QMessageBox errorMsg;
         errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
@@ -279,7 +274,7 @@ void Database::addCollegesTable()
             qDebug() << "Inserting college " << college_name << " to saddleback: " << DistanceToSaddleback;
             collegesQuery.exec();
         }
-        file.close();
+        inFile.close();
     }
 }
 /*! To add a new college to database
@@ -293,11 +288,9 @@ void Database::addDistancesTable()
     int startingCollegeID;
     int endingCollegeID;
     float distanceBetween;
-    QString fileName = "newCampus_Distances.txt";
-    QFile file(fileName);
     std::ifstream inFile;
-    inFile.open(fileName.toStdString());
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    inFile.open("newCampus_Distances.txt");
+    if(!inFile)
     {
         QMessageBox errorMsg;
         errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
@@ -319,7 +312,7 @@ void Database::addDistancesTable()
             qDebug() << "Inserting distance from " << startingCollegeID  << " to: " <<  endingCollegeID << " is " << distanceBetween;
             distancesQuery.exec();
         }
-        file.close();
+        inFile.close();
 
     }
 }
@@ -334,11 +327,9 @@ void Database::addSouvenirsTable()
     int collegeID;
     std::string traditionalSouvenir;
     float cost;
-    //  QString fileName = "newCampus_Souvenirs.txt";
-    QFile file("newCampus_Souvenirs.txt");
     std::ifstream inFile;
     inFile.open("newCampus_Souvenirs.txt");
-    if(!file.open(QIODevice::ReadOnly))
+    if(!inFile)
     {
         QMessageBox errorMsg;
         errorMsg.setText("There was a problem attempting to upload the file. Please try again. ");
@@ -355,13 +346,13 @@ void Database::addSouvenirsTable()
             QSqlQuery souvenirQuery;
             // Adds the college name, ID, and distanceToSaddleback to colleges table in database
             souvenirQuery.prepare("INSERT INTO souvenirs (id, collegeID, traditionalSouvenir, cost) VALUES(collegeID, traditional_souvenir, :cost)");
-            souvenirQuery.bindValue(":startingCollegeID", collegeID);
-            souvenirQuery.bindValue(":endingCollegeID", traditional_souvenir);
-            souvenirQuery.bindValue(":distanceBetween", cost);
+            souvenirQuery.bindValue(":collegeID", collegeID);
+            souvenirQuery.bindValue(":traditional_souvenir", traditional_souvenir);
+            souvenirQuery.bindValue(":cost", cost);
             qDebug() << "Inserting souvenir from " << collegeID << " names " << traditional_souvenir << "that costs $" << cost;
             souvenirQuery.exec();
         }
-        file.close();
+        inFile.close();
 
     }
 }

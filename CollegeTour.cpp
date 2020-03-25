@@ -122,7 +122,7 @@ void CollegeTour::confirmPurchase(souvenirItem souvenir)
     bool ok;
     int souvenirAmountInput = QInputDialog::getInt(this, tr("Souvenir Amount"),
                                                    tr("How many of this item would you like:"), 1, 0, 99, 1, &ok);
-    if(souvenirAmountInput != 0)
+    if(souvenirAmountInput != 0 && ok)
     {
         for(int i = 0; i < souvenirAmountInput; i++)
         {
